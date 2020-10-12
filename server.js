@@ -60,6 +60,15 @@ app.post('/api/notes', (req, res) => {
     }
 });
 
+// route to serve index.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+// route to serve notes.html
+app.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/notes.html'));
+});
 
 // Listener
 app.listen(PORT, () => {
