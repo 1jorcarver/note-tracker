@@ -14,9 +14,30 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Functions
+// Create note
 function createNewNote(body, noteArray) {
+    const note = body;
+    noteArray.push(note);
+    fs.writeFileSync(
+        path.join(__dirname, './db/db.json'),
+        JSON.stringify({ notes: noteArray }, null, 2)
+    );
+    return note;
+};
 
-}
+// Validate note
+function validateNote(note) {
+    if (!note.title || typeof note.title !== 'string') {
+      return false;
+    }
+    if (!note.text || typeof note.text !== 'string') {
+      return false;
+    }
+    if (!note.id || typeof note.id !== 'string') {
+      return false;
+    }
+    return true;
+};
 
 // Routes
 // GET route
@@ -26,11 +47,18 @@ app.get('/api/notes', (req, res) => {
 
 // POST route
 app.post('/api/notes', (req, res) => {
-    // ID based on what the next index of the array will be
+    // set ID based on what the next index of the array will be
     req.body.id = notes.length.toString();
 
+    // if any data in req.body is incorrect, send 404 error back
+    if (!validateNote(req.body)) {
+        res.status(400).send('The note is not properly formatted.');
+    } else {
+    // add note to json file & notes array in this function
+    const note = createNewNote(req.body, notes);
     res.json(req.body);
-})
+    }
+});
 
 
 // Listener
