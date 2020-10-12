@@ -8,7 +8,6 @@ This application, Note-Taker, used a front end starter code and Express.js back 
 - [Installation](##Installation)
 - [Back End Built With](##Built-With)
 - [How to Use it](##Usage)
-- [Credits](##Credits)
 - [License](##License)
 - [Questions](##Questions)
 
@@ -25,14 +24,11 @@ The app used the following installations:
 - Heroku
 
 ## Usage
-\The follow images shows the finished product:
-![Finished Product]()
+The follow images shows the finished product:
+![Almost Finished Product](images/screen-shot-broken.png)
 
-Click on the following link for a walkthrough video demonstrating its functionality: 
-[YouTube]()
-
-## Credits
-
+Heroku Live URL:
+[Heroku](https://agile-cliffs-40988.herokuapp.com/notes)
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
